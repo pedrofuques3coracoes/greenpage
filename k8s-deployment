@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-page
+  labels:
+    app: green-page
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: green-page
+  template:
+    metadata:
+      labels:
+        app: green-page
+    spec:
+      containers:
+        - name: green-page
+          image: pedrofuques/green-page:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: green-page-service
+spec:
+  type: LoadBalancer # Change to NodePort if using Minikube
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: green-page
