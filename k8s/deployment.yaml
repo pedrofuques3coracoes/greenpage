@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: green-page
-          image: pedrofuques/green-page:blue
+          image: pedrofuques/green-page:latest
           ports:
             - containerPort: 80
 ---
