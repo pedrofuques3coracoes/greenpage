@@ -19,15 +19,3 @@ spec:
           image: pedrofuques/green-page:5668
           ports:
             - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: green-page-service
-spec:
-  type: LoadBalancer # Change to NodePort if using Minikube
-  ports:
-    - port: 80
-      targetPort: 80
-  selector:
-    app: green-page
